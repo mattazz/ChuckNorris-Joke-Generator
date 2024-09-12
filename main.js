@@ -8,7 +8,8 @@ const container = document.getElementById('button-container')
 // a list of all category jokes
 
 fetch(categoryList) //fetches
-    .then(response => response.json()) //gets data in JSON
+    .then(response =>
+        response.json()) //gets data in JSON
     .then(categories => { //pushes data into categories array 
         categories.forEach(category => { //run a forEach loop that creates a button and adds a click event
             const button = document.createElement('button');
@@ -38,14 +39,16 @@ fetch(categoryList) //fetches
     })
 
 function GetRandomJoke() {
-    const randomJoke = ""
+    const randomJoke = "" //empty variable
 
-    fetch(url)
-        .then(response => response.json())
-        .then(jokeData => {
+    fetch(url) //get data
+        .then(response => response.json()) //convert JSON
+        .then(jokeData => { //gets the JSON data, then only gets the "value"
+            console.log(jokeData)
             console.log(`Random Joke: ${jokeData.value}`);
             const randomJokecontainer = document.getElementById('random-joke-container')
             randomJokecontainer.innerHTML = jokeData.value
+            //all just CSS to style it
             randomJokecontainer.style.border = "2px solid white"
             randomJokecontainer.style.boxShadow = "5px 5px"
             randomJokecontainer.style.borderRadius = "20px"
